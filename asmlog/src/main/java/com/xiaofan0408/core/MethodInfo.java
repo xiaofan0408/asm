@@ -15,12 +15,32 @@ public class MethodInfo {
 
     private static final String OUTPUT_FORMAT = "The method's name is %s ,the cost is %dms and the result is ";
 
-    private String mClassName;              // 类名
-    private String mMethodName;             // 方法名
-    private String mMethodDesc;             // 方法描述符
-    private Object mResult;                 // 方法执行结果
-    private long mCost;                     // 方法执行耗时
-    private List<Object> mArgumentList;     // 方法参数列表
+    /**
+     * 类名
+     */
+    private String mClassName;
+
+    /**
+     *  方法名
+     */
+    private String mMethodName;
+
+    /**
+     * 方法描述符
+     */
+    private String mMethodDesc;
+    /**
+     * 方法执行结果
+     */
+    private Object mResult;
+    /**
+     * 方法执行耗时
+     */
+    private long mCost;
+    /**
+     *  方法参数列表
+     */
+    private List<Object> mArgumentList;
 
     MethodInfo() {
         mArgumentList = new ArrayList<>();

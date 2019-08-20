@@ -7,9 +7,9 @@ import org.objectweb.asm.Opcodes;
 /**
  * @author xuzefan  2019/8/9 16:02
  */
-public class ClassAdapter extends ClassVisitor implements Opcodes {
+public class MyMethodVisitor extends ClassVisitor implements Opcodes {
 
-    public ClassAdapter(final ClassVisitor cv) {
+    public MyMethodVisitor(final ClassVisitor cv) {
         super(ASM5, cv);
     }
 
@@ -17,7 +17,8 @@ public class ClassAdapter extends ClassVisitor implements Opcodes {
     public MethodVisitor visitMethod(final int access, final String name,
                                      final String desc, final String signature, final String[] exceptions) {
         MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
-        return mv == null ? null : new MethodAdapter(mv);
+//        return mv == null ? null : new MethodAdapter(mv);
+        return new MyMethodAdapter(Opcodes.ASM5,mv,access,name,desc);
     }
 }
 

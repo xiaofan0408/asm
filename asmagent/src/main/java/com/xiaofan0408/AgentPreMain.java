@@ -26,7 +26,7 @@ public class AgentPreMain {
                 e.printStackTrace();
             }
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-            cr.accept(new ClassAdapter(cw), ClassReader.EXPAND_FRAMES);
+            cr.accept(new MyMethodVisitor(cw), ClassReader.EXPAND_FRAMES);
             return cw.toByteArray();
         }
     }
