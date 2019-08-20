@@ -12,6 +12,7 @@
         <module>asmlog</module>
         <module>asmagent</module>
         <module>asmtest</module>
+        <module>instrumenttest</module>
     </modules>
 
 

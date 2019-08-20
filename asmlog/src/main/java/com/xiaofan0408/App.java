@@ -20,22 +20,19 @@ import java.util.concurrent.TimeUnit;
  */
 public class App {
 
-    public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
         ClassReader cr = new ClassReader(Test3.class.getName());
         ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
         cr.accept(new LogVisitor(cw), ClassReader.EXPAND_FRAMES);
         byte[] data = cw.toByteArray();
-        String path = Test3.class.getResource(Test3.class.getSimpleName() + ".class").getPath();
-        File file = new File(path);
 
-        FileOutputStream fout = new FileOutputStream(file);
-        fout.write(data);
-        fout.close();
         MyClassLoader myClassLoader = new MyClassLoader();
         Class<?> clazz = myClassLoader.defineClassForName(Test3.class.getName(),data);
         Object object = clazz.newInstance();
-        Method[] methods = clazz.getMethods();
-        methods[0].invoke(object,new Object[] {});
+        Method methodTest = clazz.getMethod("test",new Class[]{});
+        Method methodAdd = clazz.getMethod("add",int.class, int.class);
+        methodTest.invoke( object,new Object[]{});
+        methodAdd.invoke(object, 5, 6);
     }
 
 }

@@ -18,4 +18,13 @@ public class Test3 {
         }
         System.out.println("test asm log");
     }
+
+    @AsmLog
+    public int add(int a,int b)  {
+
+        for (int i = 0;i<10000000;i++) {
+
+        }
+        return a + b;
+    }
 }
